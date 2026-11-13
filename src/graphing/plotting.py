@@ -98,7 +98,7 @@ def plot_pie_sum(
     column="Duration_milliseconds",
     column_timing = None,
 ):
-    timestamp_groups, datapoint_groups, labels, colors = filter_and_group(
+    timestamp_groups, datapoint_groups, labels, colors, _ = filter_and_group(
         gc_event_dataframes, group_by, filter_by, labels, column, colors, column_timing
     )
     # if no plot is passed in, create a new plot
@@ -109,7 +109,7 @@ def plot_pie_sum(
     pie_slices_sizes = []
     for idx, datapoints in enumerate(datapoint_groups):
         pslice = sum(datapoints)
-        pie_slices_sizes.append(slice)
+        pie_slices_sizes.append(pslice)
         labels[idx] = labels[idx] + " : " + str(pslice)
     plot.pie(pie_slices_sizes, labels=labels, colors=colors, startangle=-40)
     plot.legend(bbox_to_anchor=(1.05, 1), loc="upper left")

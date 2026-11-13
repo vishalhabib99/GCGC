@@ -204,7 +204,7 @@ import pandas as pd
 #   Create a 2d numpy array, and dimensions list associated with a gc_event_dataframe, such that
 #   the 2d array represents the frequencies of latency events, based on the specified dimensions.
 def get_heatmap_data(timestamp_groups, datapoint_groups, labels, dimensions):
-    if len(dimensions) != 4:
+    if dimensions is None or len(dimensions) != 4:
         print("""Dimensions incorrect.
         Dimensions must be a list following the format:
         dimensions[0] = number of x buckets
